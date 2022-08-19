@@ -5,6 +5,6 @@ Efficient algorithms, intelligent approaches, and intensive use of computers are
 You can download the code by:
 
     git clone https://github.com/gabrieldgf4/cbir-anr.git
-    cd insect_defoliation
+    cd cbir-anr
     
     Then, open MATLAB and execute the file "test.m"
