@@ -4,6 +4,24 @@ Efficient algorithms, intelligent approaches, and intensive use of computers are
 
 ![alt tag](https://user-images.githubusercontent.com/63321757/185625922-22089398-9f30-4c58-8ff7-4ac7d4e99a4a.png)
 
+
+If you use this project, cite:
+
+    @article{gabriel2022,
+        Author = Author={Vieira, Gabriel and 
+                  Fonseca, Afonso and
+                  Sousa, Naiane and
+                  Felix, Juliana and
+                  Soares, Fabrizzio},
+        Title = {A novel content-based image retrieval system with feature descriptor integration and accuracy noise reduction},
+        journal={},
+        volume={},
+        pages={},
+        doi={},
+        url = {},
+        year={2022}
+    }
+
 You can download the code by:
 
     git clone https://github.com/gabrieldgf4/cbir-anr.git
