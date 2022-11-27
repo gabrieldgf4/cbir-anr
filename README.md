@@ -17,7 +17,7 @@ CBIR - Initial cluster:
     [~, initialCluster, ~] = search_initial_image_retrieval(datasetFeatures, queryFeatures,...
             totalDatasetImages, descriptorEndPosition);
             
-See the results:
+See the results (wrong answers are highlighted with red bounding boxes):
     
 <img src="https://user-images.githubusercontent.com/63321757/204153581-6652413d-5e36-4fef-9771-242abfabf1cf.png" width=95% height=95%>
     
