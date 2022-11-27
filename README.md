@@ -19,16 +19,20 @@ CBIR - Initial cluster:
             
 See the results:
     
-    XXX
+<img src="https://user-images.githubusercontent.com/63321757/204140963-59b87e97-c661-4d90-87e2-3ff39e083091.png" width=95% height=95%>
     
 ANR - accuracy noise reduction
 
     numOfResults = 12;
     finalCluster = accuracy_noise_reduction( initialCluster, numOfResults );
-    
+
+Replace duplicate entries
+
+    finalCluster = replace_duplicate_entries(finalCluster, numOfResults, initialCluster);
+
 See the results after ANR:
 
-    XXX
+<img src="https://user-images.githubusercontent.com/63321757/204141109-c449c3c8-60c3-4441-94d8-b95ccaf7dd2e.png" width=95% height=95%>
 
 # Code
 You can download the code by:
