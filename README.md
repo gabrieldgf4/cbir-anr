@@ -19,7 +19,7 @@ CBIR - Initial cluster:
             
 See the results:
     
-<img src="https://user-images.githubusercontent.com/63321757/204140963-59b87e97-c661-4d90-87e2-3ff39e083091.png" width=95% height=95%>
+<img src="https://user-images.githubusercontent.com/63321757/204153581-6652413d-5e36-4fef-9771-242abfabf1cf.png" width=95% height=95%>
     
 ANR - accuracy noise reduction
 
