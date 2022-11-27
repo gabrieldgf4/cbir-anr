@@ -127,6 +127,7 @@ set(gcf, 'WindowState', 'maximized');
 %%
 fprintf('#### Precision and Recall before ANR #### \n')
 
+fprintf('Query (id): %i\n', queryIdx);
 fprintf('Precision: %1.4f\nRecall: %1.4f\n',...
     precisionQuery, recallQuery);
 
@@ -227,6 +228,7 @@ set(gcf, 'WindowState', 'maximized');
 %%
 fprintf('#### Precision and Recall after ANR #### \n')
 
+fprintf('Query (id): %i\n', queryIdx);
 fprintf('Precision: %1.4f\nRecall: %1.4f\n',...
     precisionQuery, recallQuery);
 
