@@ -43,6 +43,79 @@ for ii=0:(length(qttyImagesFolder) - 1)
 end
 
 
+%% Show the results
+% Wrong responses are surrounded by red bounding boxes. 
+% The visualization code where prepared to only work with the number of
+% retrieved images equal to 12.
+
+queryIdx = 50;
+cl = initialCluster(:,1:12);
+query = imread(strcat(folder, "/", datasetLocalImages{queryIdx, 1}, "/", datasetLocalImages{queryIdx, 2}));
+
+queryFeatures = cell2mat(datasetFeatures(queryIdx, :));
+
+% precision and recall
+precisionQuery = eval_precision(datasetLocalImages, datasetLocalImages{queryIdx}, cl(queryIdx, 1:12));
+recallQuery = eval_recall(datasetLocalImages, datasetLocalImages{queryIdx}, cl(queryIdx, 1:12));
+
+% check what answer is correct ant what is wrong
+for i=1:12 % length(cl(queryIdx, :))
+    if strcmp(datasetLocalImages{queryIdx}, datasetLocalImages{cl(queryIdx, i)})
+        hits_fails(i) = 1; % hits receives 1
+    else
+        hits_fails(i) = 0; % fails receives 0
+    end
+end
+
+% call the subtightplot function
+make_it_tight = true;
+subplot = @(m,n,p) subtightplot (m, n, p, [0.03 0.01], [0.1 0.01], [0.1 0.08]);
+if ~make_it_tight,  clear subplot;  end
+
+figure;
+
+subplot(6,6,1);
+axis off
+text(0,0.1,{'\bf{Query Image:}'}, 'FontSize',14, 'Units','normalized');
+
+subplot(6,6,7)
+imagesc(query); axis off
+
+subplot(6,6,13);
+axis off
+text(0,0.5,{'\bf{Retrieved Images:}'}, 'FontSize',14, 'Units','normalized');
+
+
+for i=1:size(cl,2)
+    retrievedImg = imread(strcat(folder, "/", datasetLocalImages{cl(queryIdx, i),1},...
+        "/", datasetLocalImages{cl(queryIdx, i), 2}));
+    
+    [h, w] = size(retrievedImg);
+    % insert a red bounding box in incorrect answers
+    if hits_fails(i) == 0
+        retrievedImg = insertShape(retrievedImg,"rectangle",[1 1 w h],...
+            'LineWidth', 16, 'Color', [255 0 0]);
+    end
+       
+    % class and predicted class
+    subplot(6,6,i+18);
+    caption = sprintf("Class=%s, y=%s", ...
+        datasetLocalImages{queryIdx,1}, datasetLocalImages{cl(queryIdx, i), 1});
+    
+    imagesc(retrievedImg); axis off;   
+    title(caption);
+    
+end
+
+subplot(6,6,31);
+axis off
+precisionQueryStr = sprintf('%1.2f', precisionQuery);
+recallQueryStr = sprintf('%1.2f', recallQuery);
+text(0,0.3,{'\bf{Precision}: ' precisionQueryStr 'Recall: ' recallQueryStr}, 'FontSize',14, 'Units','normalized');
+
+set(gcf, 'WindowState', 'maximized');
+
+
 %% ANR - accuracy noise reduction
 
 numOfResults = 12;
@@ -52,6 +125,79 @@ finalCluster = accuracy_noise_reduction( initialCluster, numOfResults );
 %% Replace duplicate entries
 
 finalCluster = replace_duplicate_entries(finalCluster, numOfResults, initialCluster);
+
+
+%% Show the results
+% Wrong responses are surrounded by red bounding boxes. 
+% The visualization code where prepared to only work with the number of
+% retrieved images equal to 12.
+
+queryIdx = 50;
+cl = finalCluster(:,1:12);
+query = imread(strcat(folder, "/", datasetLocalImages{queryIdx, 1}, "/", datasetLocalImages{queryIdx, 2}));
+
+queryFeatures = cell2mat(datasetFeatures(queryIdx, :));
+
+% precision and recall
+precisionQuery = eval_precision(datasetLocalImages, datasetLocalImages{queryIdx}, cl(queryIdx, 1:12));
+recallQuery = eval_recall(datasetLocalImages, datasetLocalImages{queryIdx}, cl(queryIdx, 1:12));
+
+% check what answer is correct ant what is wrong
+for i=1:12 % length(cl(queryIdx, :))
+    if strcmp(datasetLocalImages{queryIdx}, datasetLocalImages{cl(queryIdx, i)})
+        hits_fails(i) = 1; % hits receives 1
+    else
+        hits_fails(i) = 0; % fails receives 0
+    end
+end
+
+% call the subtightplot function
+make_it_tight = true;
+subplot = @(m,n,p) subtightplot (m, n, p, [0.03 0.01], [0.1 0.01], [0.1 0.08]);
+if ~make_it_tight,  clear subplot;  end
+
+figure;
+
+subplot(6,6,1);
+axis off
+text(0,0.1,{'\bf{Query Image:}'}, 'FontSize',14, 'Units','normalized');
+
+subplot(6,6,7)
+imagesc(query); axis off
+
+subplot(6,6,13);
+axis off
+text(0,0.5,{'\bf{Retrieved Images:}'}, 'FontSize',14, 'Units','normalized');
+
+
+for i=1:size(cl,2)
+    retrievedImg = imread(strcat(folder, "/", datasetLocalImages{cl(queryIdx, i),1},...
+        "/", datasetLocalImages{cl(queryIdx, i), 2}));
+    
+    [h, w] = size(retrievedImg);
+    % insert a red bounding box in incorrect answers
+    if hits_fails(i) == 0
+        retrievedImg = insertShape(retrievedImg,"rectangle",[1 1 w h],...
+            'LineWidth', 16, 'Color', [255 0 0]);
+    end
+       
+    % class and predicted class
+    subplot(6,6,i+18);
+    caption = sprintf("Class=%s, y=%s", ...
+        datasetLocalImages{queryIdx,1}, datasetLocalImages{cl(queryIdx, i), 1});
+    
+    imagesc(retrievedImg); axis off;   
+    title(caption);
+    
+end
+
+subplot(6,6,31);
+axis off
+precisionQueryStr = sprintf('%1.2f', precisionQuery);
+recallQueryStr = sprintf('%1.2f', recallQuery);
+text(0,0.3,{'\bf{Precision}: ' precisionQueryStr 'Recall: ' recallQueryStr}, 'FontSize',14, 'Units','normalized');
+
+set(gcf, 'WindowState', 'maximized');
 
 
 %% show results
