@@ -115,6 +115,12 @@ text(0,0.3,{'\bf{Precision}: ' precisionQueryStr 'Recall: ' recallQueryStr}, 'Fo
 
 set(gcf, 'WindowState', 'maximized');
 
+%%
+fprintf('#### Precision and Recall before ANR #### \n')
+
+fprintf('Precision: %1.4f\nRecall: %1.4f\n',...
+    precisionQuery, recallQuery);
+
 
 %% ANR - accuracy noise reduction
 
@@ -198,6 +204,13 @@ recallQueryStr = sprintf('%1.2f', recallQuery);
 text(0,0.3,{'\bf{Precision}: ' precisionQueryStr 'Recall: ' recallQueryStr}, 'FontSize',14, 'Units','normalized');
 
 set(gcf, 'WindowState', 'maximized');
+
+
+%%
+fprintf('#### Precision and Recall after ANR #### \n')
+
+fprintf('Precision: %1.4f\nRecall: %1.4f\n',...
+    precisionQuery, recallQuery);
 
 
 %% show results
