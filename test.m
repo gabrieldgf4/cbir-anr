@@ -93,8 +93,17 @@ for i=1:size(cl,2)
     [h, w] = size(retrievedImg);
     % insert a red bounding box in incorrect answers
     if hits_fails(i) == 0
-        retrievedImg = insertShape(retrievedImg,"rectangle",[1 1 w h],...
-            'LineWidth', 16, 'Color', [255 0 0]);
+%         retrievedImg = insertShape(retrievedImg,"rectangle",[1 1 w h],...
+%             'LineWidth', 16, 'Color', [255 0 0]);
+        
+        r = retrievedImg(:,:,1); g = retrievedImg(:,:,2); b = retrievedImg(:,:,3);
+        
+        linWidth = 10;
+        r(1:linWidth,:) = 255; r(end-linWidth:end,:) = 255; r(:,1:linWidth) = 255; r(:,end-linWidth:end) = 255;
+        g(1:linWidth,:) = 0; g(end-linWidth:end,:) = 0; g(:,1:linWidth) = 0; g(:,end-linWidth:end) = 0;
+        b(1:linWidth,:) = 0; b(end-linWidth:end,:) = 0; b(:,1:linWidth) = 0; b(:,end-linWidth:end) = 0;  
+        
+        retrievedImg = cat(3,r,g,b);
     end
        
     % class and predicted class
@@ -183,8 +192,17 @@ for i=1:size(cl,2)
     [h, w] = size(retrievedImg);
     % insert a red bounding box in incorrect answers
     if hits_fails(i) == 0
-        retrievedImg = insertShape(retrievedImg,"rectangle",[1 1 w h],...
-            'LineWidth', 16, 'Color', [255 0 0]);
+%         retrievedImg = insertShape(retrievedImg,"rectangle",[1 1 w h],...
+%             'LineWidth', 16, 'Color', [255 0 0]);
+        
+        r = retrievedImg(:,:,1); g = retrievedImg(:,:,2); b = retrievedImg(:,:,3);
+        
+        linWidth = 10;
+        r(1:linWidth,:) = 255; r(end-linWidth:end,:) = 255; r(:,1:linWidth) = 255; r(:,end-linWidth:end) = 255;
+        g(1:linWidth,:) = 0; g(end-linWidth:end,:) = 0; g(:,1:linWidth) = 0; g(:,end-linWidth:end) = 0;
+        b(1:linWidth,:) = 0; b(end-linWidth:end,:) = 0; b(:,1:linWidth) = 0; b(:,end-linWidth:end) = 0;  
+        
+        retrievedImg = cat(3,r,g,b);
     end
        
     % class and predicted class
