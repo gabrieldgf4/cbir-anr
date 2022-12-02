@@ -17,9 +17,9 @@ CBIR - Initial cluster:
     [~, initialCluster, ~] = search_initial_image_retrieval(datasetFeatures, queryFeatures,...
             totalDatasetImages, descriptorEndPosition);
             
-See the results (wrong answers are highlighted with red bounding boxes):
+See the results before ANR (wrong answers are highlighted with red bounding boxes):
     
-<img src="https://user-images.githubusercontent.com/63321757/204153581-6652413d-5e36-4fef-9771-242abfabf1cf.png" width=95% height=95%>
+<img src="https://user-images.githubusercontent.com/63321757/204153581-6652413d-5e36-4fef-9771-242abfabf1cf.png" width=680 height=480>
     
 ANR - accuracy noise reduction
 
@@ -32,7 +32,7 @@ Replace duplicate entries
 
 See the results after ANR:
 
-<img src="https://user-images.githubusercontent.com/63321757/204141109-c449c3c8-60c3-4441-94d8-b95ccaf7dd2e.png" width=95% height=95%>
+<img src="https://user-images.githubusercontent.com/63321757/204141109-c449c3c8-60c3-4441-94d8-b95ccaf7dd2e.png" width=680 height=480>
 
 # Code
 You can download the code by:
